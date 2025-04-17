@@ -1,0 +1,84 @@
+{
+    "name": "foxes-knowledge",
+    "version": "1.0.0",
+    "private": true,
+    "license": "ISC",
+    "author": "Paul Litovka",
+    "description": "Website for a Foxes Knowledge service.",
+    "scripts": {
+        "prepare": "husky install",
+        "dev": "next dev",
+        "build": "next build",
+        "export": "next export",
+        "start": "next start",
+        "lint": "next lint",
+        "typecheck": "tsc",
+        "format": "prettier --loglevel warn --write .",
+        "cypress": "cypress open",
+        "cypress:headless": "cypress run"
+    },
+    "dependencies": {
+        "dayjs": "^1.11.5",
+        "iron-session": "^6.1.3",
+        "markdown-to-jsx": "^7.1.7",
+        "next": "12.2.5",
+        "nprogress": "^0.2.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-select": "^5.4.0",
+        "react-textarea-autosize": "^8.3.4",
+        "zustand": "4.1.1"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.0.3",
+        "@types/node": "^18.7.13",
+        "@types/nprogress": "^0.2.0",
+        "@types/react": "^18.0.17",
+        "@types/react-dom": "^18.0.6",
+        "commitlint-config-gitmoji": "^2.2.5",
+        "cypress": "^10.6.0",
+        "eslint": "^8.22.0",
+        "eslint-config-next": "^12.2.5",
+        "eslint-config-prettier": "^8.5.0",
+        "husky": "^8.0.1",
+        "prettier": "^2.7.1",
+        "sass": "^1.54.5",
+        "typescript": "^4.7.4"
+    },
+    "engines": {
+        "node": ">=18",
+        "pnpm": ">=7"
+    },
+    "pnpm": {
+        "peerDependencyRules": {
+            "ignoreMissing": [
+                "commitlint",
+                "@babel/core"
+            ],
+            "allowedVersions": {
+                "react": "18",
+                "react-dom": "18"
+            }
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.nixdev.co/foxes-knowledge/foxes-knowledge.git"
+    },
+    "bugs": {
+        "url": "https://gitlab.nixdev.co/foxes-knowledge/foxes-knowledge/issues"
+    },
+    "homepage": "https://gitlab.nixdev.co/foxes-knowledge/foxes-knowledge#readme",
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}

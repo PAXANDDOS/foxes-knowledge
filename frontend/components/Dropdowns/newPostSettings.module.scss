@@ -1,0 +1,55 @@
+.dropdown {
+    position: absolute;
+    min-width: 360px;
+    max-width: 360px;
+    bottom: calc(100% + $su-2);
+    margin-left: $su-4;
+    padding: $su-3;
+    background: white;
+    border: $border-thin-darker;
+    box-shadow: $shadow-lighten;
+    border-radius: $radius-auto;
+    font-size: $fs-base;
+    font-family: $ff-content;
+    z-index: $z-dropdown;
+
+    .heading {
+        font-size: $fs-xl;
+        font-family: $ff-content;
+        margin-bottom: $su-4;
+    }
+
+    .block {
+        @include flex-column;
+        width: 100%;
+        margin-top: $su-3;
+        margin-bottom: $su-6;
+
+        .title {
+            font-size: $fs-l;
+            margin-bottom: $su-2;
+            font-weight: 600;
+        }
+
+        .content {
+            font-size: $fs-s;
+            font-weight: 400;
+            margin-bottom: $su-25;
+        }
+    }
+
+    animation: popUpIn 160ms ease forwards;
+    @keyframes popUpIn {
+        0% {
+            opacity: 0;
+            transform: translateY(10%);
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

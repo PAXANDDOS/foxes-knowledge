@@ -1,0 +1,9 @@
+#!/command/with-contenv sh
+
+if /var/www/foxes-knowledge/artisan migrate &>/dev/null; then
+    printf "\n 💽 Migration successful\n\n"
+    exit 0
+else
+    printf "\n ⚠️ 💽 Could not run migrations\n\n"
+    exit 1
+fi

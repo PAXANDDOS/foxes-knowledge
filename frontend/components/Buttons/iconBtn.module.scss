@@ -1,0 +1,27 @@
+.iconBtn {
+    width: 40px;
+    height: 40px;
+    padding: $su-25;
+    border-radius: $radius-auto;
+    margin-left: $su-1;
+
+    &:hover {
+        fill: $brand-blue;
+        background: $brand-blue-active;
+    }
+    &:first-of-type {
+        margin-left: 0;
+    }
+    &:last-of-type {
+        margin-left: auto;
+    }
+
+    &[name='settings'] {
+        padding: $su-2;
+    }
+
+    &[data-active='true'] {
+        fill: $dark-5;
+        background: $white-0;
+    }
+}

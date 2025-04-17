@@ -1,0 +1,6 @@
+.markdownBar {
+    @include flex-row;
+    width: 100%;
+    padding: $su-2 $su-9;
+    background: $white-2;
+}

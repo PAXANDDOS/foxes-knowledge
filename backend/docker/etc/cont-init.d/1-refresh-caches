@@ -1,0 +1,7 @@
+#!/command/with-contenv sh
+
+/var/www/foxes-knowledge/artisan config:cache
+
+/var/www/foxes-knowledge/artisan route:cache
+
+printf "\n 🗄️ Caches refreshed\n\n"

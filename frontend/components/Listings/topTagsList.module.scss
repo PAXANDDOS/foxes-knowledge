@@ -1,0 +1,55 @@
+.topTagsList {
+    @include flex-column;
+    border-radius: $radius-auto;
+    border: $border-thin;
+    background: white;
+
+    @include phone {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .header {
+        @include flex-row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: $su-3;
+
+        h2 {
+            font-size: $fs-l;
+        }
+
+        a {
+            font-size: $fs-s;
+        }
+    }
+
+    .content {
+        @include flex-column;
+
+        a {
+            @include flex-row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: $su-3;
+
+            span {
+                font-size: $fs-s;
+
+                &:last-of-type {
+                    background: $white-2;
+                    border-radius: 30px;
+                    padding: $su-2;
+                    font-size: $fs-xs;
+                    font-weight: 500;
+                }
+            }
+
+            &:hover {
+                background: $white-2;
+            }
+        }
+    }
+}

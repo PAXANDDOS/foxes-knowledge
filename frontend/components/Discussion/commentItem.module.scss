@@ -1,0 +1,61 @@
+.comment {
+    .container {
+        @include flex-column;
+        border: $border-thin-darker;
+        border-radius: $radius-auto;
+        padding: $su-3;
+        gap: $su-2;
+
+        .author {
+            @include flex-row;
+            width: fit-content;
+            align-items: center;
+            border-radius: $radius-auto;
+            gap: $su-1;
+            cursor: pointer;
+            padding: $su-1 $su-2;
+
+            &:hover {
+                background: $white-2;
+            }
+
+            .image {
+                display: flex;
+                border-radius: 50%;
+                overflow: hidden;
+                width: 26px;
+                height: 26px;
+
+                picture {
+                    @include grid-center;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .name {
+                font-weight: 600;
+                font-size: $fs-base;
+                color: $dark-3;
+            }
+
+            .date {
+                font-weight: 500;
+                font-size: $fs-s;
+                color: $dark-4;
+            }
+        }
+
+        .content {
+            @include reader;
+            padding-bottom: $su-2;
+        }
+    }
+
+    .reactions {
+        @include flex-row;
+        padding: 0 $su-3;
+        margin-top: $su-1;
+        gap: $su-1;
+    }
+}

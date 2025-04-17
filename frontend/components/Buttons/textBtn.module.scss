@@ -1,0 +1,13 @@
+.textBtn {
+    width: 100%;
+    padding: $su-25 0;
+    font-size: $fs-base;
+    border-radius: $radius-auto;
+    color: $brand-blue;
+    background: $brand-blue-active;
+
+    &:hover {
+        color: white;
+        background: $brand-blue;
+    }
+}

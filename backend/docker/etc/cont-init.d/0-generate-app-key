@@ -1,0 +1,17 @@
+#!/command/with-contenv sh
+
+env_path=/var/www/foxes-knowledge/.env
+app_key=$(grep APP_KEY $env_path | cut -d "=" -f2)
+
+if [ ! -z "$app_key" ]; then
+    printf "\n 🔑 Enctyption key generation not needed\n\n"
+    exit 0
+fi
+
+if /var/www/foxes-knowledge/artisan key:generate &>/dev/null; then
+    printf "\n 🔑 Enctyption key has been generated\n\n"
+    exit 0
+else
+    printf "\n ⚠️ 🔑 Could not generate encryption key\n\n"
+    exit 1
+fi

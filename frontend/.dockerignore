@@ -1,0 +1,13 @@
+Dockerfile
+.dockerignore
+node_modules
+dist
+README.md
+.editorconfig
+.prettier*
+.eslint*
+.commitlint*
+.husky
+.next
+.swc
+.git*

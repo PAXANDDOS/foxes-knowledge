@@ -1,0 +1,40 @@
+.linkTracker {
+    @include flex-row;
+    align-items: center;
+    line-height: $fs-l;
+    padding: $su-2;
+    border-radius: $radius-large-auto;
+    font-size: $fs-s;
+
+    @include phone {
+        font-size: $fs-xxs;
+    }
+
+    svg {
+        margin-right: $su-25;
+        fill: $dark-2;
+    }
+
+    &:hover {
+        background: $white-1;
+    }
+}
+
+.blockTracker {
+    @include flex-row;
+    align-items: center;
+    line-height: $fs-l;
+    padding: $su-2;
+    border-radius: $radius-large-auto;
+    font-size: $fs-s;
+    margin-left: auto;
+    margin-right: 0;
+    @include phone {
+        font-size: $fs-xs;
+    }
+
+    svg {
+        margin-right: $su-1;
+        fill: $dark-2;
+    }
+}

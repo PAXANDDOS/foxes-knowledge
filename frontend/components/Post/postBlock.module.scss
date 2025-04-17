@@ -1,0 +1,51 @@
+.post {
+    @include flex-column;
+    width: 100%;
+    min-width: 0;
+    background: white;
+    border: $border-thin-darker;
+    border-radius: $radius-auto;
+    padding: $su-5 $su-8;
+
+    .title {
+        font-size: $fs-5xl;
+        font-weight: 800;
+        margin: $su-5 0;
+        margin-bottom: $su-1;
+
+        @include phone {
+            padding: $su-2;
+            font-size: $fs-l;
+        }
+    }
+
+    .content {
+        @include reader;
+        width: 100%;
+        margin: $su-6 0;
+        line-height: $lh-base;
+    }
+
+    .buttonBlock {
+        margin: $su-5 0;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            width: 30%;
+            padding: $su-4 $su-5;
+            border-radius: $radius-large;
+            border: $border-thin-darker;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre;
+            font-size: $fs-l;
+            margin-bottom: $su-2;
+            font-weight: 600;
+            @include phone {
+                font-size: $fs-s;
+                padding: $su-1 $su-2;
+            }
+        }
+    }
+}

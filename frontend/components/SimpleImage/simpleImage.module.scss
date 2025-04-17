@@ -1,0 +1,8 @@
+.simpleImage {
+    font-size: $fs-s;
+    border: 1px solid $dark-8;
+
+    @include phone {
+        font-size: $fs-xxs;
+    }
+}

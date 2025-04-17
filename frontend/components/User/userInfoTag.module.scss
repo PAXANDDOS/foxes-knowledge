@@ -1,0 +1,15 @@
+.infoTag {
+    @include flex-column;
+
+    .title {
+        font-size: $fs-s;
+        font-weight: 700;
+        color: $dark-2;
+    }
+    .content {
+        width: fit-content;
+        font-size: $fs-s;
+        font-weight: 400;
+        color: $dark-3;
+    }
+}

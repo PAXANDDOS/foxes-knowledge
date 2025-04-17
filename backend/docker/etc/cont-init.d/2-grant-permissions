@@ -1,0 +1,6 @@
+#!/command/with-contenv sh
+
+chmod -R 775 /var/www/foxes-knowledge/storage
+chmod -R ugo+rw /var/www/foxes-knowledge/storage
+
+printf "\n 👮 Permissions granted\n\n"

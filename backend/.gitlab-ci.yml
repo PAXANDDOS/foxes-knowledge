@@ -1,0 +1,113 @@
+image: $CI_GROUP_DOCKER
+
+services:
+    - name: $CI_GROUP_DOCKER_DIND
+      alias: docker
+
+stages:
+    - build
+    - test
+    - release
+
+variables:
+    APP_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    APP_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+    AWS_ECR_IMAGE: $AWS_ECR_REGISTRY/foxes-knowledge-api:latest
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ''
+
+cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+        - vendor/
+    policy: pull-push
+
+.install_compose: &install_compose
+    - apk add --no-cache docker-compose
+    - docker-compose version
+
+.load_images: &load_images
+    - docker load -i build-production.tar || true
+    - docker load -i build-development.tar || true
+    - docker load -i pull.tar || true
+
+.launch_app: &launch_app
+    - docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d --no-build foxes-knowledge-api
+    - docker exec foxes-knowledge-api composer i
+
+before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - cp .env.example .env
+    - docker version
+
+Build production image:
+    stage: build
+    tags:
+        - docker
+    script:
+        - docker build --no-cache -f docker/Dockerfile --target production -t $APP_IMAGE .
+        - docker save -o build-production.tar $APP_IMAGE
+    needs: []
+    artifacts:
+        paths:
+            - build-production.tar
+
+Build development image:
+    stage: build
+    tags:
+        - docker
+    script:
+        - docker build --no-cache -f docker/Dockerfile --target development -t $APP_IMAGE .
+        - docker save -o build-development.tar $APP_IMAGE
+    needs: []
+    artifacts:
+        paths:
+            - build-development.tar
+
+Pull images:
+    stage: build
+    tags:
+        - docker
+    script:
+        - *install_compose
+        - docker-compose pull postgres
+        - docker save -o pull.tar postgres
+    needs: []
+    artifacts:
+        paths:
+            - pull.tar
+
+Run all tests:
+    stage: test
+    tags:
+        - docker
+    script:
+        - *load_images
+        - *install_compose
+        - *launch_app
+        - docker exec foxes-knowledge-api composer test
+    needs:
+        - job: Build development image
+          artifacts: true
+        - job: Pull images
+          artifacts: true
+    retry:
+        max: 2
+        when: always
+
+Release image:
+    stage: release
+    when: on_success
+    tags:
+        - docker
+    script:
+        - *load_images
+        - docker tag $APP_IMAGE $APP_RELEASE_IMAGE
+        - docker push $APP_RELEASE_IMAGE
+        - docker push $APP_IMAGE
+    needs:
+        - job: Build production image
+          artifacts: true
+        - job: Run all tests
+          artifacts: false

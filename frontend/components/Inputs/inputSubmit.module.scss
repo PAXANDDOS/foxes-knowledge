@@ -1,0 +1,26 @@
+.inputSubmit {
+    width: 100%;
+    background: $brand-orange;
+    color: white;
+    margin: 10px 0;
+    border-radius: $radius-auto;
+    font-family: $ff-proxima;
+    letter-spacing: 0.8px;
+    font-size: $fs-base;
+    font-weight: 600;
+    cursor: pointer;
+    padding: $su-3 $su-5;
+    @include transition;
+
+    &:hover {
+        background: darken($brand-orange, 7%);
+    }
+    &:active {
+        background: lighten($brand-orange, 4%);
+    }
+
+    @include phone {
+        height: $su-77;
+        font-size: $fs-xs;
+    }
+}

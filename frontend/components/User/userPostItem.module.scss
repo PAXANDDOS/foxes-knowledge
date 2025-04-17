@@ -1,0 +1,51 @@
+.author {
+    @include flex-row;
+    width: fit-content;
+    align-items: center;
+    cursor: pointer;
+    border-radius: $radius-default;
+    padding: $su-1;
+
+    .imageContainer {
+        display: flex;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 32px;
+        height: 32px;
+        margin-right: $su-2;
+
+        @include phone {
+            width: 24px;
+            height: 24px;
+        }
+
+        picture {
+            @include grid-center;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .infoContainer {
+        @include flex-column;
+
+        strong {
+            font-size: $fs-base;
+            font-weight: 600;
+            @include phone {
+                font-size: $fs-s;
+            }
+        }
+
+        span {
+            font-size: $fs-s;
+            @include phone {
+                font-size: $fs-xs;
+            }
+        }
+    }
+
+    &:hover {
+        background: $white-2;
+    }
+}

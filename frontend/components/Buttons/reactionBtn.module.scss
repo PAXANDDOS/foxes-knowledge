@@ -1,0 +1,15 @@
+.reactionBtn {
+    @include flex-row;
+    align-items: center;
+    padding: $su-1 $su-2;
+    border-radius: $radius-auto;
+    gap: $su-2;
+
+    svg {
+        fill: $dark-4;
+    }
+
+    &:hover {
+        background: $white-2;
+    }
+}

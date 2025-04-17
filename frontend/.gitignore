@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+.pnpm-debug.log*
+
+# Dependencies
+/node_modules
+
+# Next.js
+/.next/
+/out/
+/build/
+/dist/
+
+# Editor directories and files
+/.vscode/*
+!/.vscode/extensions.json
+/.idea
+
+# Misc
+.DS_Store
+*.pem
+
+# Local env files
+.env
+.env*.local
+
+# Typescript
+*.tsbuildinfo

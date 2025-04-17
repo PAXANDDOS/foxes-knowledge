@@ -1,0 +1,16 @@
+.container {
+    @include flex-column;
+
+    .filters {
+        width: 100%;
+        margin-bottom: 10px;
+        @include phone {
+            margin-bottom: 6px;
+        }
+    }
+
+    .list {
+        @include flex-column;
+        gap: $su-2;
+    }
+}

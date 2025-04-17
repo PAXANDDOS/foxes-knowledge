@@ -1,0 +1,58 @@
+.newComment {
+    @include flex-column;
+    border: $border-thin-darker;
+    border-radius: $radius-large-auto;
+    padding: $su-2;
+    width: 100%;
+    margin: $su-5 0;
+
+    .content {
+        resize: none;
+        min-width: 50px;
+        font-size: $fs-base;
+        padding: $su-2;
+
+        @include phone {
+            height: 70px;
+        }
+    }
+
+    .buttons {
+        @include flex-row;
+        justify-content: flex-end;
+        gap: $su-2;
+        height: fit-content;
+
+        .user {
+            display: flex;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 34px;
+            height: 34px;
+
+            @include phone {
+                width: 35px;
+                height: 30px;
+            }
+
+            picture {
+                @include grid-center;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .submit {
+            background: $brand-blue;
+            color: white;
+            padding: $su-2 $su-3;
+            border-radius: $su-10;
+            cursor: pointer;
+
+            @include transition(60ms);
+            &:hover {
+                background: darken($brand-blue, 10);
+            }
+        }
+    }
+}

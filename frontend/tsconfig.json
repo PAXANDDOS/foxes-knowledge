@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["components/*"],
+            "styles/*": ["shared/styles/*"],
+            "types/*": ["shared/@types/*"],
+            "zustand/*": ["zustand/*"],
+            "#/*": ["shared/*"]
+        },
+        "strict": true,
+        "noEmit": true,
+        "allowJs": true,
+        "incremental": true,
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "useDefineForClassFields": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "typeRoots": ["src/@types", "node_modules/@types"]
+    },
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules", "cypress"]
+}

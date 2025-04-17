@@ -1,0 +1,11 @@
+/.git/
+/.husky/
+/node_modules/
+/.next/
+/out/
+/build/
+/.vscode/
+/.idea/
+
+*.yaml
+*.yml

@@ -1,0 +1,14 @@
+.homePage {
+    @include page-base;
+    .pageContainer {
+        @include container-base(row);
+        align-items: stretch;
+        gap: $su-3;
+
+        @include phone {
+            padding-top: $su-1;
+            flex-direction: column;
+            width: 95%;
+        }
+    }
+}

@@ -1,0 +1,3 @@
+#!/command/execlineb -P
+
+/var/www/foxes-knowledge/artisan horizon

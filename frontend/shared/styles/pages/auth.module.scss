@@ -1,0 +1,37 @@
+.authPage {
+    @include page-base;
+    height: 100vh;
+
+    .authBlock {
+        width: 600px;
+        height: fit-content;
+        border: $border-thin-darker;
+        border-radius: $radius-auto;
+        background: white;
+        padding: $su-8;
+        margin: auto auto;
+        @include phone {
+            width: 90vw;
+            padding: $su-3;
+        }
+
+        .logoBlock {
+            @include grid-center;
+            .logoHeading {
+                margin-top: $su-4;
+                font-family: $ff-proxima;
+                font-size: $fs-2xl;
+                strong {
+                    color: $brand-orange;
+                }
+                @include phone {
+                    margin-top: $su-3;
+                    font-size: $fs-base;
+                }
+            }
+            svg {
+                height: $su-10;
+            }
+        }
+    }
+}

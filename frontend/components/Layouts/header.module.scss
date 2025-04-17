@@ -1,0 +1,124 @@
+.header {
+    @include flex-center;
+    width: 100%;
+    height: $header-height;
+    position: sticky;
+    top: 0;
+    z-index: $z-sticky;
+    background-color: white;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+
+    .headerContainer {
+        @include container-base(row);
+
+        @include phone {
+            width: 95%;
+        }
+
+        .headerLogo {
+            @include unselectable;
+            @include flex-row;
+            align-items: center;
+            margin-right: $su-4;
+            cursor: pointer;
+
+            figcaption {
+                height: 100%;
+                text-align: center;
+                margin-left: $su-2;
+                font-family: $ff-proxima;
+                font-size: $fs-xl;
+                font-weight: 800;
+            }
+
+            @include phone {
+                width: 95%;
+                margin: 0;
+                figcaption {
+                    display: none;
+                }
+            }
+        }
+
+        .searchbar {
+            @include flex-row;
+            height: 40px;
+            max-width: 360px;
+            width: 100%;
+            min-width: 120px;
+            margin-right: auto;
+            border: $border-thin-darker;
+            border-radius: $radius-large-auto;
+            overflow: hidden;
+            input {
+                width: calc(100% - 40px);
+                height: 100%;
+                background: transparent;
+                padding: $su-2;
+                font-size: $fs-base;
+            }
+            button {
+                width: 40px;
+                height: 100%;
+                border-radius: $radius-auto;
+
+                svg {
+                    fill: $dark-4;
+                }
+
+                &:hover {
+                    background: $dark-7;
+                }
+            }
+
+            @include phone {
+                min-width: 160px;
+                input {
+                    width: calc(100% - 40px);
+                    font-size: $fs-s;
+                }
+                button {
+                    width: 40px;
+                }
+            }
+        }
+
+        .userBlock {
+            @include flex-row;
+            align-items: center;
+            height: 40px;
+            margin-left: 20px;
+
+            .createBtn {
+                @include unselectable;
+                @include grid-center;
+                cursor: pointer;
+                height: inherit;
+                border: 1px solid $brand-blue;
+                border-radius: $radius-large-auto;
+                padding: 0 $su-25;
+                color: $brand-blue;
+                font-weight: 600;
+                font-size: $fs-base;
+
+                &:hover {
+                    color: white;
+                    background: $brand-blue;
+                }
+            }
+
+            @include phone {
+                height: 40px;
+                margin-left: 20px;
+                .createBtn {
+                    min-width: 60px;
+                    font-size: $fs-xxs;
+                    padding: 0;
+                }
+                .headerUser {
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+}

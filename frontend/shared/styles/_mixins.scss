@@ -1,0 +1,118 @@
+@mixin unselectable {
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-center($direction: '') {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: unquote($direction);
+}
+
+@mixin grid-center {
+    display: grid;
+    place-items: center;
+}
+
+@mixin transition($duration: 0) {
+    @if $duration != 0 {
+        transition: $duration cubic-bezier(1, 0.3, 0.51, 0.6);
+    } @else {
+        transition: $transition-default;
+    }
+    transition-property: background, color, border, fill, transform, box-shadow, stroke;
+}
+
+@mixin page-base {
+    @include flex-center(column);
+    width: 100%;
+}
+
+@mixin container-base($direction: column) {
+    display: flex;
+    flex-direction: $direction;
+    width: 66%;
+    padding: $layout-padding;
+    @if $direction == row {
+        justify-content: flex-start;
+        align-items: center;
+    } @else {
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+@mixin sticky-aside {
+    width: inherit;
+    position: sticky;
+    top: calc($header-height + $layout-padding);
+}
+
+@mixin reader {
+    p {
+        margin: 1em 0;
+        font-size: $fs-xl;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    ul,
+    ol {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 2em;
+        margin-inline-end: 2em;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    blockquote {
+        display: block;
+        border-left: $su-1 solid $brand-blue;
+        padding-left: 1em;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 1.1em;
+        margin-inline-end: 1.1em;
+    }
+    a {
+        text-decoration: underline;
+    }
+    pre {
+        font-size: $fs-s;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        background: $dark-2;
+        color: $white-0;
+        border-radius: $radius-auto;
+        padding: $su-3;
+        overflow-x: auto;
+        ::selection {
+            background: $brand-pink;
+        }
+    }
+    code:not(pre code) {
+        font-size: $fs-s;
+        background: $dark-2;
+        color: $white-0;
+        border-radius: $radius-auto;
+        padding: $su-1;
+    }
+    h1 {
+        font-size: $fs-3xl;
+    }
+}

@@ -1,0 +1,30 @@
+#!/command/with-contenv sh
+
+env_path=/var/www/foxes-knowledge/.env
+app_env=$(grep APP_ENV $env_path | cut -d "=" -f2)
+
+if [ "$app_env" != "local" ]; then
+    printf "\n 🌱 Not a development environment\n\n"
+    exit 0
+fi
+
+db_host=$(grep DB_HOST $env_path | cut -d "=" -f2)
+db_port=$(grep DB_PORT $env_path | cut -d "=" -f2)
+db_db=$(grep DB_DATABASE $env_path | cut -d "=" -f2)
+db_user=$(grep DB_USERNAME $env_path | cut -d "=" -f2)
+db_pass=$(grep DB_PASSWORD $env_path | cut -d "=" -f2)
+
+query=$( psql postgresql://$db_user:$db_pass@$db_host:$db_port/$db_db --command 'select exists(select 1 from users where id=1) as res' )
+
+if [[ "$query" =~ "t" ]]; then
+    printf "\n 🌱 Seeding not needed\n\n"
+    exit 0
+fi
+
+if /var/www/foxes-knowledge/artisan db:seed &>/dev/null; then
+    printf "\n 🌱 Database seeded successfully\n\n"
+    exit 0
+else
+    printf "\n ⚠️ 🌱 Database seeding failed\n\n"
+    exit 1
+fi

@@ -1,0 +1,13 @@
+.newPostPage {
+    @include page-base;
+    .pageContainer {
+        @include container-base(row);
+        justify-content: center;
+
+        @include phone {
+            padding-top: 6px;
+            flex-direction: column;
+            width: 95%;
+        }
+    }
+}

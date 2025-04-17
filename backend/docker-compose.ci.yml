@@ -1,0 +1,3 @@
+services:
+    foxes-knowledge-api:
+        image: $APP_IMAGE

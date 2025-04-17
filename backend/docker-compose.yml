@@ -1,0 +1,102 @@
+version: "3.9"
+
+networks:
+    knowledge-network:
+        name: knowledge-network
+        driver: bridge
+
+services:
+    foxes-knowledge-api:
+        container_name: foxes-knowledge-api
+        image: foxes-knowledge-api:latest
+        restart: unless-stopped
+        build:
+            context: .
+            dockerfile: docker/Dockerfile
+            target: development
+        ports:
+            - 8000:80
+        volumes:
+            - ./:/var/www/foxes-knowledge:rw
+        networks:
+            - knowledge-network
+        depends_on:
+            postgres:
+                condition: service_healthy
+
+    postgres:
+        container_name: postgres
+        image: postgres:14.5-alpine
+        ports:
+            - 5432:5432
+        restart: always
+        environment:
+            POSTGRES_DB: $DB_DATABASE
+            POSTGRES_USER: $DB_USERNAME
+            POSTGRES_PASSWORD: $DB_PASSWORD
+        healthcheck:
+            test: [ CMD-SHELL, pg_isready, -U, $DB_USERNAME, -d, $DB_DATABASE ]
+            interval: 30s
+            timeout: 60s
+            retries: 5
+            start_period: 80s
+        volumes:
+            - pg-storage:/var/lib/postgresql/data:rw
+        networks:
+            - knowledge-network
+
+    redis:
+        container_name: redis
+        image: redis:7.0-alpine
+        ports:
+            - 6379:6379
+        volumes:
+            - redis-storage:/data:rw
+        networks:
+            - knowledge-network
+
+    minio:
+        container_name: minio
+        image: minio/minio:latest
+        entrypoint: sh
+        command: >
+            -c 'mkdir -p /data/$AWS_BUCKET &&
+            minio server --address 0.0.0.0:9000 --console-address ":9001" /data'
+        ports:
+            - 127.0.0.1:8080:9000
+            - 8081:9001
+        environment:
+            MINIO_ROOT_USER: $AWS_ACCESS_KEY_ID
+            MINIO_ROOT_PASSWORD: $AWS_SECRET_ACCESS_KEY
+        volumes:
+            - minio-storage:/data:rw
+        healthcheck:
+            test: [ CMD, curl, -f, http://localhost:9000/minio/health/live ]
+            interval: 30s
+            timeout: 20s
+            retries: 3
+        restart: on-failure
+        networks:
+            - knowledge-network
+
+    mailhog:
+        container_name: mailhog
+        image: mailhog/mailhog:v1.0.1
+        logging:
+            driver: none
+        ports:
+            - 1025:1025
+            - 8025:8025
+        networks:
+            - knowledge-network
+
+volumes:
+    pg-storage:
+        name: pg-storage
+        driver: local
+    redis-storage:
+        name: redis-storage
+        driver: local
+    minio-storage:
+        name: minio-storage
+        driver: local

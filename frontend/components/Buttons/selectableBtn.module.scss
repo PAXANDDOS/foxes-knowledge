@@ -1,0 +1,24 @@
+.selectableBtn {
+    width: fit-content;
+    height: 42px;
+    padding: $su-3 $su-4;
+    font-size: $fs-l;
+    font-family: $ff-proxima;
+    line-height: $fs-xl;
+    border-radius: $radius-auto;
+
+    @include phone {
+        font-size: $fs-base;
+        line-height: $fs-l;
+    }
+
+    &:hover {
+        background: white;
+        color: $brand-blue;
+    }
+
+    &[x-active='true'] {
+        font-weight: 700;
+        letter-spacing: 0.4px;
+    }
+}

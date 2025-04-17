@@ -1,0 +1,6 @@
+.trackerList {
+    @include flex-row;
+    justify-content: center;
+    align-items: center;
+    padding: $su-1 0;
+}

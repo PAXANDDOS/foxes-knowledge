@@ -1,0 +1,29 @@
+.postItem {
+    width: 100%;
+    min-height: 160px;
+    background: white;
+    border: $border-thin-darker;
+    border-radius: $radius-auto;
+    padding: $su-4 $su-5;
+
+    @include phone {
+        margin-bottom: $su-1;
+        padding: $su-2;
+    }
+
+    .postTitle {
+        font-size: $fs-2xl;
+        margin-top: $su-2;
+        @include phone {
+            font-size: $fs-l;
+        }
+
+        a {
+            color: $accent-header;
+
+            &:hover {
+                color: $brand-orange;
+            }
+        }
+    }
+}

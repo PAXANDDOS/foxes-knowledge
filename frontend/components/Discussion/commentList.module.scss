@@ -1,0 +1,5 @@
+.comments {
+    @include flex-column;
+    width: 100%;
+    gap: $su-3;
+}

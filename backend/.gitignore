@@ -1,0 +1,22 @@
+# IDE
+/.idea
+/.vscode
+/_ide_helper*
+/.*.meta.*
+
+# Managed by Composer
+/vendor/
+
+# Caches
+/*.cache
+
+###> laravel/laravel ###
+/public/hot
+/public/storage
+/storage/*.key
+/.env*
+!/.env*example
+###< laravel/laravel ###
+
+# Tests
+/tests/CodeCoverage

@@ -1,0 +1,36 @@
+.reaction {
+    @include flex-center(column);
+    width: 100%;
+
+    .button {
+        @include grid-center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50px;
+        margin-bottom: $su-1;
+
+        svg {
+            fill: $dark-3;
+
+            &[x-label='upvoted'] {
+                fill: $brand-pink;
+            }
+            &[x-label='downvoted'] {
+                fill: $brand-orange;
+            }
+        }
+
+        &:disabled {
+            opacity: 0.5;
+        }
+
+        &:hover {
+            background: $brand-blue-active;
+        }
+    }
+
+    .count {
+        color: $dark-3;
+        font-size: $fs-s;
+    }
+}

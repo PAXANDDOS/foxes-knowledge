@@ -1,0 +1,33 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app
+
+    # Available levels: 0 - 9
+    level: 7
+
+    excludePaths:
+        - app\Mail
+
+    ignoreErrors:
+        -
+            message: '#Property [a-zA-Z0-9\\_]+::\$reactions is not writable.#'
+            path: app/Services/CommentService.php
+        -
+            message: '#PHPDoc tag @var has invalid value \(\$token\): Unexpected token "\$token", expected type at offset 20#'
+            path: app\Http\Controllers\AuthController.php
+        -
+            message: '#Call to an undefined method [a-zA-Z0-9\\_]+::delete().#'
+            path: app\Http\Controllers\AuthController.php
+        -
+            message: '#Parameter \#1 \$key of method [a-zA-Z0-9\\_]+::by() expects string, int<min, -1>|int<1, max>|string|null given.#'
+            path: app\Providers\RouteServiceProvider.php
+        -
+            message: '#Parameter \#1 \$attributes of method [a-zA-Z0-9\\]+::create() expects array<string, mixed>, array<int|string, mixed> given.#'
+            path: app\Http\Controllers\InvitationController.php
+
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false

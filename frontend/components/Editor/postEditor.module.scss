@@ -1,0 +1,75 @@
+.container {
+    @include flex-column;
+    min-width: 500px;
+    width: 100%;
+    max-width: 900px;
+
+    .modes {
+        @include flex-row;
+        justify-content: flex-end;
+        margin-bottom: $su-2;
+    }
+
+    .form {
+        @include flex-column;
+
+        .editor {
+            @include flex-column;
+            width: 100%;
+            min-height: 600px;
+            background: white;
+            border: $border-thin-darker;
+            border-radius: $radius-auto;
+
+            .title {
+                max-width: 100%;
+                font-weight: 800;
+                font-size: $fs-5xl;
+                font-family: $ff-content;
+                line-height: $lh-tight;
+                resize: none;
+                border-radius: $radius-auto;
+                margin: $su-7 $su-9;
+                background: transparent;
+            }
+
+            .tags {
+                margin: 0 $su-9;
+                margin-bottom: $su-3;
+                padding: $su-05;
+                border: $border-thin;
+                border-radius: $radius-auto;
+            }
+
+            .content {
+                display: block;
+                max-width: 100%;
+                min-height: 54px;
+                margin: $su-5 $su-9;
+                font-family: $ff-code;
+                font-size: $fs-l;
+                resize: none;
+            }
+
+            .preview {
+                @include reader;
+                display: block;
+                max-width: 100%;
+                min-height: 54px;
+                margin: $su-5 $su-9;
+                font-family: $ff-content;
+                font-size: $fs-xl;
+            }
+        }
+
+        .options {
+            @include flex-row;
+            align-items: center;
+            width: 100%;
+
+            button {
+                margin-left: $su-4;
+            }
+        }
+    }
+}

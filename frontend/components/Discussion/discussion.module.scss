@@ -1,0 +1,8 @@
+.discussion {
+    font-size: $fs-2xl;
+    font-weight: 700;
+    @include phone {
+        font-size: $fs-l;
+        padding: $su-1 $su-2;
+    }
+}

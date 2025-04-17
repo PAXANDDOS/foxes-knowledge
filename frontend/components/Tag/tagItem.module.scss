@@ -1,0 +1,12 @@
+.tagItem {
+    font-size: $fs-s;
+    padding: $su-1 $su-2;
+    border: 1px solid transparent;
+    border-radius: $radius-auto;
+
+    @include phone {
+        font-size: $fs-xxs;
+    }
+
+    @include transition(70ms);
+}

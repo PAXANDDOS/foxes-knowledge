@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+    font-family: 'Proxima Nova', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+code {
+    font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea,
+fieldset {
+    outline: none;
+    border: none;
+    color: #252525;
+}
+button:enabled,
+input:enabled,
+select:enabled,
+textarea:enabled {
+    outline: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+    color: #515ddd;
+}
+
+html,
+body {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: #515ddd;
+    color: rgb(250, 249, 250);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #252525;
+}
+
+p {
+    color: #484848;
+}
